@@ -65,6 +65,7 @@ class MeteoRetriever
             'dew_point'     => (string) $latestWeatherReadings->dewpointTemperature['value'],
             'humidity'      => (string) $latestWeatherReadings->humidity['value'],
             'temperature'   => (string) $latestWeatherReadings->temperature['value'],
+            'fog'           => (string) $latestWeatherReadings->fog['percent'],
             'low_clouds'    => (string) $latestWeatherReadings->lowClouds['percent'],
             'medium_clouds' => (string) $latestWeatherReadings->mediumClouds['percent'],
             'high_clouds'   => (string) $latestWeatherReadings->highClouds['percent'],
