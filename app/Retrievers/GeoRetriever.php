@@ -52,4 +52,39 @@ class GeoRetriever
         }
         return false;
     }
+
+    public function getAddress($latitude, $longitude)
+    {
+        // Use cached data if we already have it
+        $geoData = Cache::get('geo-data-' . $latitude . '-' . $longitude);
+
+        // If not, get fresh data from API
+        if (!$geoData) {
+            $geoData = $this->doGetAddress($latitude, $longitude);
+            if ($geoData) {
+                // Store fresh data to cache
+                Cache::put('geo-data-' . $latitude . '-' . $longitude, $geoData, $this->cacheValidityPeriod);
+            }
+        }
+
+        return $geoData;
+    }
+
+    private function doGetAddress($latitude, $longitude)
+    {
+        try {
+            $result = $this->geoCoder->geocode($latitude . ',' . $longitude);
+            if ($result && $result['total_results'] > 0) {
+                $firstResult = $result['results'][0];
+                return [
+                    'lat'           => $firstResult['geometry']['lat'],
+                    'lon'           => $firstResult['geometry']['lng'],
+                    'description'   => $firstResult['formatted']
+                ];
+            }
+        } catch (\Exception $e) {
+
+        }
+        return false;
+    }
 }

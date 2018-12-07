@@ -31,6 +31,10 @@ class Weather
     public function getWeatherData()
     {
         if ($this->getByLatLon) {
+            $address = $this->geoRetriever->getAddress($this->latitude, $this->longitude);
+            if ($address) {
+                $this->address = $address['description'];
+            }
             return $this->getWeatherDataByLatLon();
         }
         return $this->getWeatherDataByAddress();
@@ -70,6 +74,7 @@ class Weather
         if ($geoData) {
             $this->latitude = $geoData['lat'];
             $this->longitude = $geoData['lon'];
+            $this->address = $geoData['description'];
             return $this->getWeatherDataByLatLon();
         }
         return [

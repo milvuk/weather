@@ -24,9 +24,8 @@ class WeatherController extends Controller
 
     public function test()
     {
-        $weather = new Weather('', '', 'Podgorica');
-        $data = $weather->getWeatherData();
-
+        $w = new Weather('44.7719817', '17.1898929');
+        $data = $w->getWeatherData();
         var_dump($data);
     }
 }
