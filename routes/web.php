@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'WeatherController@index');
+Route::get('/ajax/check_weather', 'WeatherAjaxController@checkWeather');
+
+
+Route::get('/test', 'WeatherController@test');
