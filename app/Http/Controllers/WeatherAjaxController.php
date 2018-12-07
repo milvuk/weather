@@ -11,13 +11,13 @@ class WeatherAjaxController extends Controller
 {
     public function checkWeather()
     {
-        $departureAddress = trim(Input::get('dep-address'));
-        $departureLatitude = trim(Input::get('dep-lat'));
-        $departureLongitude = trim(Input::get('dep-lon'));
+        $departureAddress = trim(Input::get('dep_address'));
+        $departureLatitude = trim(Input::get('dep_lat'));
+        $departureLongitude = trim(Input::get('dep_lon'));
 
-        $destinationAddress = trim(Input::get('dest-address'));
-        $destinationLatitude = trim(Input::get('dest-lat'));
-        $destinationLongitude = trim(Input::get('dest-lon'));
+        $destinationAddress = trim(Input::get('dest_address'));
+        $destinationLatitude = trim(Input::get('dest_lat'));
+        $destinationLongitude = trim(Input::get('dest_lon'));
 
         $departureWeather = new Weather($departureLatitude, $departureLongitude, $departureAddress);
         $departureData = $departureWeather->getWeatherData();
