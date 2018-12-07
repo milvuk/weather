@@ -12,7 +12,7 @@
 
                 <h2 class="mt-5">Weather</h2>
 
-                <div class="float-left col-md-4">
+                <div class="float-left col-md-4 input-box">
                     <h4>Departure</h4>
                     Address/City
                     <input class="form-control" type="text" placeholder="Address/City" id="dep-address">
@@ -23,7 +23,7 @@
                     <input class="form-control" type="text" placeholder="latitude" id="dep-lat">
                 </div>
 
-                <div class="float-left col-md-4">
+                <div class="float-left col-md-4 input-box">
                     <h4>Destination</h4>
                     Address/City
                     <input class="form-control" type="text" placeholder="Address/City" id="dest-address">
@@ -53,8 +53,12 @@
                 <b>Temperature:</b> <span id="dep-result-temperature"></span> <br>
             </div>
 
-
-
+            <div class="display-box">
+                <div class="display-box-top"><div class="top-box-result"><span id="dep-result-fog"></span>%</div>Fog</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dep-result-low-clouds"></span>%</div>Low<br>Clouds</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dep-result-medium-clouds"></span>%</div>Medium<br>Clouds</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dep-result-high-clouds"></span>%</div>High<br>Clouds</div>
+            </div>
 
         </div>
 
@@ -67,7 +71,12 @@
                 <b>Temperature:</b> <span id="dest-result-temperature"></span> <br>
             </div>
 
-
+            <div class="display-box">
+                <div class="display-box-top"><div class="top-box-result"><span id="dest-result-fog"></span>%</div>Fog</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dest-result-low-clouds"></span>%</div>Low<br>Clouds</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dest-result-medium-clouds"></span>%</div>Medium<br>Clouds</div>
+                <div class="display-box-top"><div class="top-box-result"><span id="dest-result-high-clouds"></span>%</div>High<br>Clouds</div>
+            </div>
 
         </div>
 

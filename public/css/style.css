@@ -1,6 +1,30 @@
+.input-box {
+    background-color: white;
+    border-radius: 6px;
+}
+
 .result-box {
     background-color: lightblue;
     color: darkblue;
     border-radius: 6px;
     padding: 0.5em;
+}
+
+.display-box {
+    margin-top: 10px;
+}
+
+.display-box-top {
+    float: left;
+    color: white;
+    text-align: center;
+    background-color: darkblue;
+    width: 24%;
+    height: 60px;
+    margin-right: 1px;
+    font-size: 10px;
+}
+
+.top-box-result {
+    font-size: 18px;
 }

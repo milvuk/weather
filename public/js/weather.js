@@ -63,8 +63,12 @@ function checkWeather() {
 }
 
 function fillMeteoData(meteoData, location) {
-    $('#' + location + '-result-dew').text(meteoData.dew_point);
-    $('#' + location + '-result-humidity').text(meteoData.humidity);
+    $('#' + location + '-result-dew').text(Math.round(meteoData.dew_point) + '\u00B0');
+    $('#' + location + '-result-humidity').text(Math.round(meteoData.humidity) + '%');
     $('#' + location + '-result-temperature').text(meteoData.temperature);
+    $('#' + location + '-result-fog').text(Math.round(meteoData.fog));
+    $('#' + location + '-result-low-clouds').text(Math.round(meteoData.low_clouds));
+    $('#' + location + '-result-medium-clouds').text(Math.round(meteoData.medium_clouds));
+    $('#' + location + '-result-high-clouds').text(Math.round(meteoData.high_clouds));
 }
 
