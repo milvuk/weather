@@ -72,6 +72,7 @@ function fillMeteoData(meteoData, location) {
     $('#' + location + '-result-high-clouds').text(Math.round(meteoData.high_clouds));
 
     drawClouds(meteoData, location);
+    drawWeatherSymbol(meteoData, location);
 }
 
 function drawClouds(meteoData, location) {
@@ -96,5 +97,52 @@ function changeCloudOpacity(selector, cloudPercentage) {
     } else {
         selector.attr('style', 'opacity: 0');
     }
+}
+
+function drawWeatherSymbol(meteoData, location) {
+    let selector = $('#' + location + '-symbol');
+    let image = '';
+
+    switch (meteoData.symbol) {
+        case 'Sun':
+            image = 'sun.png';
+            break;
+        case 'Cloud':
+            image = 'cloud.png';
+            break;
+        case 'Rain':
+        case 'HeavyRain':
+            image = 'rain.png';
+            break;
+        case 'Snow':
+        case 'HeavySnow':
+            image = 'snow.png';
+            break;
+        case 'LightRain':
+        case 'RainSun':
+        case 'LightRainSun':
+            image = 'light_rain.png';
+            break;
+        case 'LightSnow':
+        case 'SnowSun':
+        case 'LightSnowSun':
+            image = 'light_snow.png';
+            break;
+        case 'Fog':
+            image = 'fog.png';
+            break;
+        case 'Drizzle':
+            image = 'drizzle.png';
+            break;
+        case 'PartlyCloud':
+        case 'LightCloud':
+            image = 'partly_cloud.png';
+            break;
+        default:
+            image = 'sun.png';
+            break;
+    }
+
+    selector.attr('src', GLOBAL_URL_BASE + 'images/' + image);
 }
 

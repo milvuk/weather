@@ -59,7 +59,7 @@
                 <div class="display-box-top"><div class="top-box-result"><span id="dep-result-medium-clouds"></span>%</div>Medium<br>Clouds</div>
                 <div class="display-box-top"><div class="top-box-result"><span id="dep-result-high-clouds"></span>%</div>High<br>Clouds</div>
                 <div class="clearfix"></div>
-                <div class="display-box-bottom"></div>
+                <div class="display-box-bottom"><div class="weather-symbol"><img src="{!! url('images/sun.png') !!}" width="100%" id="dep-symbol"></div></div>
                 <div class="display-box-bottom"><div class="low-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dep-low-cloud-img"></div></div>
                 <div class="display-box-bottom"><div class="medium-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dep-medium-cloud-img"></div></div>
                 <div class="display-box-bottom"><div class="high-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dep-high-cloud-img"></div></div>
@@ -82,7 +82,7 @@
                 <div class="display-box-top"><div class="top-box-result"><span id="dest-result-medium-clouds"></span>%</div>Medium<br>Clouds</div>
                 <div class="display-box-top"><div class="top-box-result"><span id="dest-result-high-clouds"></span>%</div>High<br>Clouds</div>
                 <div class="clearfix"></div>
-                <div class="display-box-bottom"></div>
+                <div class="display-box-bottom"><div class="weather-symbol"><img src="{!! url('images/sun.png') !!}" width="100%" id="dest-symbol"></div></div>
                 <div class="display-box-bottom"><div class="low-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dest-low-cloud-img"></div></div>
                 <div class="display-box-bottom"><div class="medium-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dest-medium-cloud-img"></div></div>
                 <div class="display-box-bottom"><div class="high-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dest-high-cloud-img"></div></div>
