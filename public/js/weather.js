@@ -70,5 +70,31 @@ function fillMeteoData(meteoData, location) {
     $('#' + location + '-result-low-clouds').text(Math.round(meteoData.low_clouds));
     $('#' + location + '-result-medium-clouds').text(Math.round(meteoData.medium_clouds));
     $('#' + location + '-result-high-clouds').text(Math.round(meteoData.high_clouds));
+
+    drawClouds(meteoData, location);
+}
+
+function drawClouds(meteoData, location) {
+    let lowCloudPerc = Math.round(meteoData.low_clouds);
+    let mediumCloudPerc = Math.round(meteoData.medium_clouds);
+    let highCloudPerc = Math.round(meteoData.high_clouds);
+
+    let lowCloudSelector = $('#' + location + '-low-cloud-img');
+    let mediumCloudSelector = $('#' + location + '-medium-cloud-img');
+    let highCloudSelector = $('#' + location + '-high-cloud-img');
+
+    changeCloudOpacity(lowCloudSelector, lowCloudPerc);
+    changeCloudOpacity(mediumCloudSelector, mediumCloudPerc);
+    changeCloudOpacity(highCloudSelector, highCloudPerc);
+}
+
+function changeCloudOpacity(selector, cloudPercentage) {
+    if (cloudPercentage >= 20 && cloudPercentage < 50) {
+        selector.attr('style', 'opacity: 0.5');
+    } else if (cloudPercentage >= 50) {
+        selector.attr('style', 'opacity: 1');
+    } else {
+        selector.attr('style', 'opacity: 0');
+    }
 }
 
