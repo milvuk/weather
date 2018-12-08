@@ -21,9 +21,10 @@
                     <input class="form-control" type="text" placeholder="latitude" id="dep-lat" disabled>
                     Longitude
                     <input class="form-control" type="text" placeholder="longitude" id="dep-lon" disabled>
+                    <div class="err-message" id="err-message-dep"></div>
                 </div>
 
-                <div class="float-left col-md-4 input-box">
+                <div class="float-left col-md-4 input-box" id="dest-input-box">
                     <h4>Destination</h4>
                     <label><input type="radio" name="dest-address-or-latlon" value="address" checked> Address/City</label>
                     <input class="form-control" type="text" placeholder="Address/City" id="dest-address">
@@ -32,6 +33,7 @@
                     <input class="form-control" type="text" placeholder="latitude" id="dest-lat" disabled>
                     Longitude
                     <input class="form-control" type="text" placeholder="longitude" id="dest-lon" disabled>
+                    <div class="err-message" id="err-message-dest"></div>
                 </div>
 
                 <div>

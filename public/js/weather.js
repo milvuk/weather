@@ -63,6 +63,7 @@ function checkWeather() {
     let checkButton = $('#check');
     let resultsContainer = $('#results-container');
 
+    cleanErrors();
     checkButton.prop('disabled', true);
     checkButton.text('Checking...');
     resultsContainer.fadeOut();
@@ -94,7 +95,7 @@ function checkWeather() {
                 fillMeteoData(data.destination.meteo, 'dest');
                 resultsContainer.fadeIn();
             } else if (data.status === 'error') {
-                alert(data.message);
+                showErrors(data.message);
             }
             checkButton.text('Check weather');
             checkButton.prop('disabled', false);
@@ -184,5 +185,17 @@ function drawWeatherSymbol(meteoData, location) {
     }
 
     selector.attr('src', GLOBAL_URL_BASE + 'images/' + image);
+}
+
+function showErrors(message) {
+    let selector = $('#err-message-dep');
+    if (message.startsWith('Dest')) {
+        selector = $('#err-message-dest')
+    }
+    selector.text(message);
+}
+
+function cleanErrors() {
+    $('#err-message-dep, #err-message-dest').text('');
 }
 
