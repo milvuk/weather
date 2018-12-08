@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Retrievers\GeoRetriever;
-use App\Retrievers\MeteoRetriever;
 use App\Weather;
 use Illuminate\Support\Facades\Input;
 
