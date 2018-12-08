@@ -1,35 +1,71 @@
 $(document).ready(function () {
     $('#check').on('click', checkWeather);
 
-    $('#dep-address').on('keypress', function () {
-        $('#dep-lat').val('');
-        $('#dep-lon').val('');
+    $('input[type=radio][name=dep-address-or-latlon]').change(function () {
+        let depCoordinateInputs = $('#dep-lat, #dep-lon');
+        let depAddressInput = $('#dep-address');
+
+        if (this.value === 'address') {
+            depCoordinateInputs.val('');
+            depCoordinateInputs.prop('disabled', true);
+            depAddressInput.prop('disabled', false);
+        }
+        else if (this.value === 'latlon') {
+            depAddressInput.val('');
+            depAddressInput.prop('disabled', true);
+            depCoordinateInputs.prop('disabled', false);
+        }
     });
 
-    $('#dest-address').on('keypress', function () {
-        $('#dest-lat').val('');
-        $('#dest-lon').val('');
-    });
+    $('input[type=radio][name=dest-address-or-latlon]').change(function () {
+        let destCoordinateInputs = $('#dest-lat, #dest-lon');
+        let destAddressInput = $('#dest-address');
 
-    $('#dep-lat, #dep-lon').on('keypress', function () {
-        $('#dep-address').val('');
-    });
-
-    $('#dest-lat, #dest-lon').on('keypress', function () {
-        $('#dest-address').val('');
+        if (this.value === 'address') {
+            destCoordinateInputs.val('');
+            destCoordinateInputs.prop('disabled', true);
+            destAddressInput.prop('disabled', false);
+        }
+        else if (this.value === 'latlon') {
+            destAddressInput.val('');
+            destAddressInput.prop('disabled', true);
+            destCoordinateInputs.prop('disabled', false);
+        }
     });
 
 });
 
 function checkWeather() {
-    let dep_address = $('#dep-address').val().trim();
-    let dep_lat = $('#dep-lat').val().trim();
-    let dep_lon = $('#dep-lon').val().trim();
-    let dest_address = $('#dest-address').val().trim();
-    let dest_lat = $('#dest-lat').val().trim();
-    let dest_lon = $('#dest-lon').val().trim();
+    let dep_address = '';
+    let dep_lat = '';
+    let dep_lon = '';
+    let dest_address = '';
+    let dest_lat = '';
+    let dest_lon = '';
 
-    $('#check').prop('disabled', true);
+    let dep_method = $('input[name=dep-address-or-latlon]:checked').val();
+    let dest_method = $('input[name=dest-address-or-latlon]:checked').val();
+
+    if (dep_method === 'address') {
+        dep_address = $('#dep-address').val().trim();
+    } else if (dep_method === 'latlon') {
+        dep_lat = $('#dep-lat').val().trim();
+        dep_lon = $('#dep-lon').val().trim();
+    }
+
+    if (dest_method === 'address') {
+        dest_address = $('#dest-address').val().trim();
+    } else if (dest_method === 'latlon') {
+        dest_lat = $('#dest-lat').val().trim();
+        dest_lon = $('#dest-lon').val().trim();
+    }
+
+    let checkButton = $('#check');
+    let resultsContainer = $('#results-container');
+
+    checkButton.prop('disabled', true);
+    checkButton.text('Checking...');
+    resultsContainer.fadeOut();
 
     $.ajax({
         url: GLOBAL_URL_BASE + 'ajax/check_weather',
@@ -39,9 +75,11 @@ function checkWeather() {
             dep_address: dep_address,
             dep_lat: dep_lat,
             dep_lon: dep_lon,
+            dep_method: dep_method,
             dest_address: dest_address,
             dest_lat: dest_lat,
-            dest_lon: dest_lon
+            dest_lon: dest_lon,
+            dest_method: dest_method
         },
         success: function (data) {
             console.log(data);
@@ -54,10 +92,12 @@ function checkWeather() {
 
                 fillMeteoData(data.departure.meteo, 'dep');
                 fillMeteoData(data.destination.meteo, 'dest');
+                resultsContainer.fadeIn();
             } else if (data.status === 'error') {
                 alert(data.message);
             }
-            $('#check').prop('disabled', false);
+            checkButton.text('Check weather');
+            checkButton.prop('disabled', false);
         }
     });
 }

@@ -61,3 +61,7 @@
 .top-box-result {
     font-size: 18px;
 }
+
+#results-container {
+    display: none;
+}

@@ -14,24 +14,24 @@
 
                 <div class="float-left col-md-4 input-box">
                     <h4>Departure</h4>
-                    Address/City
+                    <label><input type="radio" name="dep-address-or-latlon" value="address" checked> Address/City</label>
                     <input class="form-control" type="text" placeholder="Address/City" id="dep-address">
-                    <br> <i>OR</i> <br>
-                    Longitude
-                    <input class="form-control" type="text" placeholder="longitude" id="dep-lon">
+                    <br> <label><input type="radio" name="dep-address-or-latlon" value="latlon"> Geo coordinates</label> <br>
                     Latitude
-                    <input class="form-control" type="text" placeholder="latitude" id="dep-lat">
+                    <input class="form-control" type="text" placeholder="latitude" id="dep-lat" disabled>
+                    Longitude
+                    <input class="form-control" type="text" placeholder="longitude" id="dep-lon" disabled>
                 </div>
 
                 <div class="float-left col-md-4 input-box">
                     <h4>Destination</h4>
-                    Address/City
+                    <label><input type="radio" name="dest-address-or-latlon" value="address" checked> Address/City</label>
                     <input class="form-control" type="text" placeholder="Address/City" id="dest-address">
-                    <br> <i>OR</i> <br>
-                    Longitude
-                    <input class="form-control" type="text" placeholder="longitude" id="dest-lon">
+                    <br> <label><input type="radio" name="dest-address-or-latlon" value="latlon"> Geo coordinates</label> <br>
                     Latitude
-                    <input class="form-control" type="text" placeholder="latitude" id="dest-lat">
+                    <input class="form-control" type="text" placeholder="latitude" id="dest-lat" disabled>
+                    Longitude
+                    <input class="form-control" type="text" placeholder="longitude" id="dest-lon" disabled>
                 </div>
 
                 <div>
@@ -43,6 +43,8 @@
         </div>
 
         <br>
+
+        <div id="results-container">
 
         <div class="float-left col-md-4" id="results-dep">
             <div class="result-box">
@@ -87,6 +89,8 @@
                 <div class="display-box-bottom"><div class="medium-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dest-medium-cloud-img"></div></div>
                 <div class="display-box-bottom"><div class="high-cloud"><img src="{!! url('images/cloud.png') !!}" width="100%" id="dest-high-cloud-img"></div></div>
             </div>
+
+        </div>
 
         </div>
 
